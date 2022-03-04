@@ -38,16 +38,16 @@ class OurDoctorsFragment : Fragment() {
 
 
           val doctorList: List<Doctor> =
-               listOf(Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"),
-                    Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"),
-                    Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"),
-                    Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"),
-                    Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"),
-                    Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"),
-                    Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"),
-                    Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"),
-                    Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"),
-                    Doctor(resources.getResourceName(R.drawable.ic_launcher_background),"Ali","Ali","Ali"))
+               listOf(Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"),
+                    Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"),
+                    Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"),
+                    Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"),
+                    Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"),
+                    Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"),
+                    Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"),
+                    Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"),
+                    Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"),
+                    Doctor(R.drawable.male_doctor,"Ali","Ali","Ali"))
           doctorAdapter.setDoctorList(doctorList)
 
           recyclerView.adapter = doctorAdapter
