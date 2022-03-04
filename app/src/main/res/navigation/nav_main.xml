@@ -30,7 +30,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.vhaapp.ui.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_ourDoctorsFragment"
+            app:destination="@id/ourDoctorsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.example.vhaapp.ui.RegistrationFragment"
@@ -38,6 +42,15 @@
         tools:layout="@layout/registration_fragment" >
         <action
             android:id="@+id/action_registrationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ourDoctorsFragment"
+        android:name="com.example.vhaapp.ui.OurDoctorsFragment"
+        android:label="fragment_our_doctors"
+        tools:layout="@layout/fragment_our_doctors" >
+        <action
+            android:id="@+id/action_ourDoctorsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
