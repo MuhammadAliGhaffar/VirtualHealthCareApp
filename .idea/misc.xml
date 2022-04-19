@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/fragment_nearest_hospitals.xml" value="0.1" />
         <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/home_fragment.xml" value="0.259375" />
         <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/main_home_fragment_layout.xml" value="0.259375" />
         <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/nav_header.xml" value="0.259375" />

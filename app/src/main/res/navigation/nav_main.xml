@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_homeFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_nearestHospitalsFragment"
+            app:destination="@id/nearestHospitalsFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -63,6 +66,15 @@
         tools:layout="@layout/chat_fragment" >
         <action
             android:id="@+id/action_chatFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nearestHospitalsFragment"
+        android:name="com.example.vhaapp.ui.NearestHospitalsFragment"
+        android:label="fragment_nearest_hospitals"
+        tools:layout="@layout/fragment_nearest_hospitals" >
+        <action
+            android:id="@+id/action_nearestHospitalsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

@@ -57,7 +57,9 @@ class HomeFragment : Fragment() {
           mainHomeLayout.findViewById<CardView>(R.id.ourDoctorsCardView).setOnClickListener {
                findNavController().navigate(R.id.action_homeFragment_to_ourDoctorsFragment)
           }
-          mainHomeLayout.findViewById<CardView>(R.id.nearestHospitalCardView).setOnClickListener {  }
+          mainHomeLayout.findViewById<CardView>(R.id.nearestHospitalCardView).setOnClickListener {
+               findNavController().navigate(R.id.action_homeFragment_to_nearestHospitalsFragment)
+          }
           mainHomeLayout.findViewById<CardView>(R.id.articlesCardView).setOnClickListener {  }
           mainHomeLayout.findViewById<CardView>(R.id.predictionCardView).setOnClickListener {  }
           mainHomeLayout.findViewById<CardView>(R.id.appointmentsCardView).setOnClickListener {  }
