@@ -42,9 +42,19 @@
             android:layout_below="@id/cardViewProfile"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:textColor="@color/white"
             android:fontFamily="@font/roboto_bold"
             android:text="Muhammad Ali Ghaffar"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewUsername"
+            android:layout_centerHorizontal="true"
+            android:paddingHorizontal="35dp"
+            android:paddingVertical="8dp"
+            android:textColor="@color/white"
+            android:text="Edit Profile" />
     </RelativeLayout>
 </RelativeLayout>

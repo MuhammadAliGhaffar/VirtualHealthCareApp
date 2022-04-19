@@ -1,9 +1,13 @@
 package com.example.vhaapp.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.cardview.widget.CardView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -18,6 +22,7 @@ class HomeFragment : Fragment() {
      private lateinit var mainDrawer: DrawerLayout
      private lateinit var navigationView: NavigationView
      private lateinit var bottomNavigation: BottomNavigationView
+     private lateinit var mainHomeLayout:RelativeLayout
 
      override fun onCreate(savedInstanceState: Bundle?) {
           super.onCreate(savedInstanceState)
@@ -41,6 +46,21 @@ class HomeFragment : Fragment() {
           toolbar = view.findViewById(R.id.toolbar)
           mainDrawer = view.findViewById(R.id.mainDrawer)
           navigationView = view.findViewById(R.id.navigationView)
+          mainHomeLayout = view.findViewById(R.id.mainHomeLayout)
+
+          mainHomeLayout.findViewById<CardView>(R.id.emergencyCardView).setOnClickListener {
+               startActivity(Intent(Intent.ACTION_DIAL,Uri.parse("tel:" + "021111111134")))
+          }
+          mainHomeLayout.findViewById<CardView>(R.id.ourAgentCardView).setOnClickListener {
+               findNavController().navigate(R.id.action_homeFragment_to_chatFragment)
+          }
+          mainHomeLayout.findViewById<CardView>(R.id.ourDoctorsCardView).setOnClickListener {
+               findNavController().navigate(R.id.action_homeFragment_to_ourDoctorsFragment)
+          }
+          mainHomeLayout.findViewById<CardView>(R.id.nearestHospitalCardView).setOnClickListener {  }
+          mainHomeLayout.findViewById<CardView>(R.id.articlesCardView).setOnClickListener {  }
+          mainHomeLayout.findViewById<CardView>(R.id.predictionCardView).setOnClickListener {  }
+          mainHomeLayout.findViewById<CardView>(R.id.appointmentsCardView).setOnClickListener {  }
 
           setupRightMenu()
           setupNavigationDrawer()
@@ -52,12 +72,8 @@ class HomeFragment : Fragment() {
           toolbar.inflateMenu(R.menu.main_menu)
           toolbar.setOnMenuItemClickListener {
                when (it.itemId) {
-                    R.id.menuContactUs -> {
-                         Toast.makeText(activity, "Contact Us", Toast.LENGTH_SHORT).show()
-                         true
-                    }
-                    R.id.menuTermsAndCondition -> {
-                         Toast.makeText(activity, "Terms and Conditions", Toast.LENGTH_SHORT).show()
+                    R.id.menuLogout -> {
+                         Toast.makeText(activity, "Logout", Toast.LENGTH_SHORT).show()
                          true
                     }
                     else -> false
@@ -79,10 +95,6 @@ class HomeFragment : Fragment() {
                     }
                     R.id.menuDoctors -> {
                          findNavController().navigate(R.id.action_homeFragment_to_ourDoctorsFragment)
-                    }
-                    R.id.menuAbout -> {
-                    }
-                    R.id.menuContact -> {
                     }
                }
                menuItem.isChecked = true

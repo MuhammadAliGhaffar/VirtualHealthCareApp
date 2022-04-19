@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/menuAppointments"
+            android:enabled="true"
+            android:title="Appointments" />
+
+        <item
+            android:id="@+id/menuPrediction"
+            android:enabled="true"
+            android:title="Prediction" />
+
         <item
             android:id="@+id/menuArticle"
             android:enabled="true"
             android:title="Article" />
+
         <item
             android:id="@+id/menuDoctors"
             android:enabled="true"
             android:title="Our Doctors" />
+
         <item
-            android:id="@+id/menuAbout"
+            android:id="@+id/menuNearestHospital"
             android:enabled="true"
-            android:title="About Us" />
-        <item
-            android:id="@+id/menuContact"
-            android:enabled="true"
-            android:title="Contact Us" />
+            android:title="Nearest Hospital" />
     </group>
 </menu>

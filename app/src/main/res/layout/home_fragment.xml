@@ -28,6 +28,14 @@
 
         </androidx.appcompat.widget.Toolbar>
 
+        <include
+            android:id="@+id/mainHomeLayout"
+            layout="@layout/main_home_fragment_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar" />
+
+
     </RelativeLayout>
 
     <!--    Side Drawer-->

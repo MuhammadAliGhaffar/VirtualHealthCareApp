@@ -16,91 +16,181 @@
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_registration" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/fieldsContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/imgRegistration"
-            android:layout_marginTop="10dp">
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edtUsername"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/edit_text_border"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Username" />
-
-            <EditText
-                android:id="@+id/edtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_below="@id/edtUsername"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/edit_text_border"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Email" />
-
-
-            <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_below="@id/edtEmail"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/edit_text_border"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Password"
-                android:inputType="textPassword" />
-
-            <EditText
-                android:id="@+id/edtRePassword"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_below="@id/edtPassword"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/edit_text_border"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Re-Password"
-                android:inputType="textPassword" />
-
-
-            <TextView
-                android:id="@+id/txtTermsAndCondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/edtRePassword"
-                android:layout_alignStart="@id/edtRePassword"
-                android:layout_alignEnd="@id/edtRePassword"
-                android:layout_marginStart="40dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="By signing up you accept the Term of service and Privacy Policy" />
-
-            <Button
-                android:id="@+id/btnSignUp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtTermsAndCondition"
-                android:layout_marginHorizontal="20dp"
-                android:backgroundTint="#00a89a"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Sign Up" />
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-            <TextView
-                android:id="@+id/txtSignIn"
-                android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_border"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Email" />
+
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_border"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btnSignUp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Already have an account? Sign in" />
-        </RelativeLayout>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_border"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="First Name" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_border"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Last Name" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_border"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="dd/mm/yyyy" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_border"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Age"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_border"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Weight"
+                    android:inputType="number" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_border"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Height"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_pirates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/radio_ninjas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Female" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtTermsAndCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fieldsContainer"
+            android:layout_alignStart="@id/fieldsContainer"
+            android:layout_alignEnd="@id/fieldsContainer"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="By signing up you accept the Term of service and Privacy Policy" />
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtTermsAndCondition"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="#00a89a"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Sign Up" />
+
+        <TextView
+            android:id="@+id/txtSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnSignUp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Already have an account? Sign in" />
 
     </RelativeLayout>
 
