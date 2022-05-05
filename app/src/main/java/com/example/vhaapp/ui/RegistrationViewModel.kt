@@ -2,7 +2,6 @@ package com.example.vhaapp.ui
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.vhaapp.repository.Repository
 import com.google.gson.GsonBuilder
@@ -17,7 +16,6 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import javax.inject.Inject
-import javax.security.auth.callback.Callback
 
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(@ApplicationContext val context: Context, private val repository: Repository) : ViewModel() {
