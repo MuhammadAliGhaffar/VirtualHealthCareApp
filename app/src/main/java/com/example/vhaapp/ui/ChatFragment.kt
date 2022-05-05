@@ -6,9 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.vhaapp.R
@@ -17,8 +15,10 @@ import com.google.android.material.chip.ChipGroup
 
 class ChatFragment : Fragment() {
 
-    lateinit var messageTo: AutoCompleteTextView
-    lateinit var personList: ChipGroup
+    lateinit var autoCompleteTextView: AutoCompleteTextView
+    lateinit var chipGroup: ChipGroup
+    lateinit var sendButton: ImageButton
+    private val list = ArrayList<String>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,37 +29,57 @@ class ChatFragment : Fragment() {
     }
 
     private fun initView(view: View) {
-        messageTo = view.findViewById(R.id.messageTo)
-        personList = view.findViewById(R.id.personList)
-        val items = arrayOf(
-            "Paries,France", "PA,United States", "Parana,Brazil",
-            "Padua,Italy", "Pasadena,CA,United States"
-        )
+        autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView)
+        chipGroup = view.findViewById(R.id.chipGroup)
+        sendButton = view.findViewById(R.id.sendButton)
 
-        messageTo.threshold = 2
-        messageTo.setAdapter(context?.let { ArrayAdapter(it,android.R.layout.select_dialog_item,items) })
+        val languages = resources.getStringArray(R.array.Languages)
+        autoCompleteTextView.threshold = 1
+
+        val adapter = ArrayAdapter(requireContext(),
+            android.R.layout.simple_list_item_1, languages)
+        autoCompleteTextView.setAdapter(adapter)
 
 
+        autoCompleteTextView.setOnItemClickListener { adapterView, view, i, l ->
+            Toast.makeText(context,adapterView.adapter.getItem(i).toString(),Toast.LENGTH_SHORT).show()
+        }
 
-        messageTo.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                val text = s.toString()
-                if (text.isNotEmpty() && (text.last().toString() == ","))
-                    messageTo.setText("")
+
+        sendButton.setOnClickListener {
+            if (autoCompleteTextView.text.isEmpty() || autoCompleteTextView.text.isBlank()){
+                Toast.makeText(context,"Enter some symtoms",Toast.LENGTH_SHORT).show()
+            }else{
+                list.add(autoCompleteTextView.text.toString())
+                addChipToGroup(autoCompleteTextView.text.toString())
+                autoCompleteTextView.setText("")
             }
+        }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (!s.isNullOrEmpty()) {
-                    if (s.length > 1 && s.last().toString() == ",") {
-                        val text = s.toString().replace(",", "")
-                        addChipToGroup(text)
-                    }
-                }
-            }
-        })
+
+//        autoCompleteTextView.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(s: Editable?) {
+//                val text = s.toString()
+//                if (text.isNotEmpty() && (text.last().toString() == ","))
+//                    autoCompleteTextView.setText("")
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                if (!s.isNullOrEmpty()) {
+//                    if (s.length > 1 && s.last().toString() == ",") {
+//                        val text = s.toString().replace(",", "")
+//                        addChipToGroup(text)
+//                    }
+//                }
+//            }
+//        })
+        view.findViewById<Button>(R.id.testButton).setOnClickListener {
+            Toast.makeText(context,list.toString()+" Size = ${list.size}",Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun addChipToGroup(personName: String) {
@@ -70,10 +90,11 @@ class ChatFragment : Fragment() {
         chip.isCloseIconVisible = true
         chip.isClickable = true
         chip.isCheckable = false
-        personList.addView(chip as View)
+        chipGroup.addView(chip as View)
         chip.setOnCloseIconClickListener {
-            personList.removeView(chip as View)
+            chipGroup.removeView(chip as View)
             Toast.makeText(context, "${chip.text} has been removed", Toast.LENGTH_SHORT).show()
+            list.remove(chip.text)
         }
     }
 

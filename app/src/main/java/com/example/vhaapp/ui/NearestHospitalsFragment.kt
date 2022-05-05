@@ -3,6 +3,7 @@ package com.example.vhaapp.ui
 import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,10 @@ import com.example.vhaapp.R
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.geojson.Point
-import com.mapbox.maps.*
+import com.mapbox.maps.CameraOptions
+import com.mapbox.maps.EdgeInsets
+import com.mapbox.maps.MapView
+import com.mapbox.maps.Style
 import com.mapbox.maps.plugin.animation.MapAnimationOptions
 import com.mapbox.maps.plugin.animation.camera
 import com.mapbox.maps.plugin.locationcomponent.location
@@ -20,6 +24,8 @@ import com.mapbox.navigation.core.MapboxNavigation
 import com.mapbox.navigation.core.trip.session.LocationMatcherResult
 import com.mapbox.navigation.core.trip.session.LocationObserver
 import com.mapbox.navigation.ui.maps.location.NavigationLocationProvider
+import com.mapbox.search.*
+import com.mapbox.search.result.SearchResult
 
 class NearestHospitalsFragment : Fragment(),PermissionsListener {
 
@@ -29,6 +35,10 @@ class NearestHospitalsFragment : Fragment(),PermissionsListener {
 
     var mapView: MapView? = null
     private lateinit var mapboxNavigation: MapboxNavigation
+
+    private lateinit var categorySearchEngine: CategorySearchEngine
+    private lateinit var searchRequestTask: SearchRequestTask
+
 
 
     private val locationObserver = object : LocationObserver {
@@ -42,6 +52,21 @@ class NearestHospitalsFragment : Fragment(),PermissionsListener {
                 locationMatcherResult.keyPoints,
             )
             updateCamera(enhancedLocation)
+        }
+    }
+
+    private val searchCallback: SearchCallback = object : SearchCallback {
+
+        override fun onResults(results: List<SearchResult>, responseInfo: ResponseInfo) {
+            if (results.isEmpty()) {
+                Log.i("SearchApiExample", "No category search results")
+            } else {
+                Log.i("SearchApiExample", "Category search results: $results")
+            }
+        }
+
+        override fun onError(e: Exception) {
+            Log.i("SearchApiExample", "Search error", e)
         }
     }
 
@@ -60,11 +85,20 @@ class NearestHospitalsFragment : Fragment(),PermissionsListener {
         mapView = view.findViewById(R.id.mapView)
 
         if (PermissionsManager.areLocationPermissionsGranted(context)) {
+            categorySearchEngine = MapboxSearchSdk.getCategorySearchEngine()
+
+            searchRequestTask = categorySearchEngine.search(
+                "hospital",
+                CategorySearchOptions(limit = 20),
+                searchCallback
+            )
+
             mapView?.location?.apply {
                 setLocationProvider(navigationLocationProvider)
                 enabled = true
             }
             initNavigation()
+
         } else {
             permissionsManager = PermissionsManager(this)
             permissionsManager.requestLocationPermissions(requireActivity())
@@ -110,6 +144,7 @@ class NearestHospitalsFragment : Fragment(),PermissionsListener {
 
 
     override fun onDestroyView() {
+        searchRequestTask.cancel()
         super.onDestroyView()
         mapboxNavigation.stopTripSession()
         mapboxNavigation.unregisterLocationObserver(locationObserver)
