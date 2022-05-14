@@ -11,52 +11,59 @@ import com.bumptech.glide.Glide
 import com.example.vhaapp.R
 import com.example.vhaapp.model.Doctor
 
-class DoctorsAdapter : RecyclerView.Adapter<DoctorsAdapter.ViewHolder>(){
-     private var list = mutableListOf<Doctor>()
+class DoctorsAdapter : RecyclerView.Adapter<DoctorsAdapter.ViewHolder>() {
+    private var list = mutableListOf<Doctor>()
 
-     /**
-      * onClickItem RelativeLayout
-      */
-     var onItemClick: ((Doctor) -> Unit)? = null
+    /**
+     * onClickItem RelativeLayout
+     */
+    var onItemClick: ((Doctor) -> Unit)? = null
 
-     fun setDoctorList(list: List<Doctor>) {
-          this.list = list.toMutableList()
-          notifyDataSetChanged()
-     }
+    fun setDoctorList(list: List<Doctor>) {
+        this.list = list.toMutableList()
+        notifyDataSetChanged()
+    }
 
-     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-          val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row_doctors, parent, false)
-          return ViewHolder(view)
-     }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_row_doctors, parent, false)
+        return ViewHolder(view)
+    }
 
-     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-          val userModel = list[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val doctorModel = list[position]
 
-          Glide.with(holder.imageViewProfile.context).load(userModel.imageViewProfile)
-               .into(holder.imageViewProfile)
-          holder.doctorTextView.text =
-               holder.itemView.resources.getString(R.string.doctor, userModel.doctorTextView)
-          holder.postTextView.text =
-               holder.itemView.resources.getString(R.string.post, userModel.postTextView)
-          holder.hospitalTextView.text =
-               holder.itemView.resources.getString(R.string.hospital, userModel.hospitalTextView)
-          /**
-           * Item click implementation
-           */
-          holder.relativeLL.setOnClickListener {
-               onItemClick?.invoke(list[position])
-          }
-     }
+        if (doctorModel.doctorGender == "Female") {
+            Glide.with(holder.imageViewProfile.context).load(R.drawable.female_doctor)
+                .into(holder.imageViewProfile)
+        } else {
+            Glide.with(holder.imageViewProfile.context).load(R.drawable.male_doctor)
+                .into(holder.imageViewProfile)
+        }
 
-     override fun getItemCount(): Int {
-          return list.size
-     }
+        holder.doctorFirstName.text =
+            holder.itemView.resources.getString(R.string.doctor, doctorModel.doctorFirstName)
+        holder.doctorSpecialization.text =
+            holder.itemView.resources.getString(R.string.post, doctorModel.doctorSpecialization)
+        holder.hospitalName.text =
+            holder.itemView.resources.getString(R.string.hospital, doctorModel.hospitalName)
+        /**
+         * Item click implementation
+         */
+        holder.relativeLL.setOnClickListener {
+            onItemClick?.invoke(list[position])
+        }
+    }
 
-     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-          val imageViewProfile: ImageView = itemView.findViewById(R.id.imageViewProfile)
-          val doctorTextView: TextView = itemView.findViewById(R.id.doctorTextView)
-          val postTextView: TextView = itemView.findViewById(R.id.postTextView)
-          val hospitalTextView: TextView = itemView.findViewById(R.id.hospitalTextView)
-          val relativeLL: RelativeLayout = itemView.findViewById(R.id.relativeLL)
-     }
+    override fun getItemCount(): Int {
+        return list.size
+    }
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageViewProfile: ImageView = itemView.findViewById(R.id.imageViewProfile)
+        val doctorFirstName: TextView = itemView.findViewById(R.id.doctorFirstName)
+        val doctorSpecialization: TextView = itemView.findViewById(R.id.doctorSpecialization)
+        val hospitalName: TextView = itemView.findViewById(R.id.hospitalName)
+        val relativeLL: RelativeLayout = itemView.findViewById(R.id.relativeLL)
+    }
 }

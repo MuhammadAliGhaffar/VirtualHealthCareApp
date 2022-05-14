@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteDataSourceModule {
-    private const val BASE_URL = "http://192.168.1.106:5000/"
+    private const val BASE_URL = "http://192.168.1.108:5000/"
 
     @Singleton
     @Provides

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Synonyms">
+        <item>Skin Rash</item>
+        <item>Swollen Gums</item>
+        <item>Sweating</item>
+        <item>malaise</item>
+        <item>receiving unsterile injections</item>
+        <item>Stuffy Nose</item>
+        <item>intolerance of light</item>
+        <item>Intolerence of sound</item>
+        <item>chills</item>
+        <item>Gums Bleeding</item>
+        <item>fever</item>
+        <item>Loss of Balance</item>
+        <item>Foul smelling breath</item>
+        <item>weight loss</item>
+        <item>Mucus dripping down the throat</item>
+        <item>Iching</item>
+        <item>Red Spots</item>
+        <item>Red Spots</item>
+        <item>Red Spots</item>
+    </string-array>
+</resources>

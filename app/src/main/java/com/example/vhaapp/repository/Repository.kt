@@ -11,4 +11,7 @@ class Repository(private val networkDataSource: NetworkDataSource) {
 
     suspend fun loginPatient(@Body requestBody: RequestBody) =
         networkDataSource.loginPatient(requestBody)
+
+    suspend fun getAllDoctors() =
+        networkDataSource.getAllDoctors()
 }

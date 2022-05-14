@@ -7,14 +7,4 @@
     <string name="hospital">Hospital :%s</string>
     <string name="mapbox_access_token">sk.eyJ1IjoibXVoYW1tYWRhbGlnaGFmZmFyIiwiYSI6ImNsMjZpeGI5aTBzaXgzZnFpYXg0ajh6cXcifQ.qRSSkL1i16PAOGcTrM-2jQ</string>
 
-    <string-array name="Languages">
-        <item>Java</item>
-        <item>Kotlin</item>
-        <item>Swift</item>
-        <item>Python</item>
-        <item>Scala</item>
-        <item>Perl</item>
-        <item>Javascript</item>
-        <item>Jquery</item>
-    </string-array>
 </resources>
