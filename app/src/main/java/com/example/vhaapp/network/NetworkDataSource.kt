@@ -1,6 +1,8 @@
 package com.example.vhaapp.network
 
+import com.example.vhaapp.model.BriefSolutionItem
 import com.example.vhaapp.model.Doctor
+import com.example.vhaapp.model.Symptoms
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -19,4 +21,9 @@ interface NetworkDataSource {
     @GET("doctors")
     suspend fun getAllDoctors(): Response<List<Doctor>>
 
+    @POST("mark")
+    suspend fun predictDisease(@Body symptoms: Symptoms): Response<ResponseBody>
+
+    @GET("disease/view//name/malaria")
+    suspend fun getBriefSolution(): Response<List<BriefSolutionItem>>
 }

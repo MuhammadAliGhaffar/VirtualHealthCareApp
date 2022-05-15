@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,16 +34,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Test"/>
+        android:text="Test" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_below="@id/toolBar"
-        android:layout_marginTop="20dp"
         android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_toStartOf="@id/sendButton"
         android:hint="Enter Disease" />
 
@@ -50,9 +51,9 @@
         android:id="@+id/sendButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/autoCompleteTextView"
         android:layout_alignBottom="@id/autoCompleteTextView"
+        android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic_send" />
 
@@ -60,14 +61,15 @@
         android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_below="@id/autoCompleteTextView" />
+        android:layout_below="@id/autoCompleteTextView"
+        android:layout_marginHorizontal="20dp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/chipGroup"
         android:layout_marginHorizontal="20dp"
-        android:layout_below="@id/chipGroup">
+        android:paddingBottom="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -77,18 +79,125 @@
                 android:id="@+id/logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/logo" />
 
             <TextView
+                android:id="@+id/sloganText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/logo"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/teal_200"
-                android:text="Chat with our smart virtual agent"/>
+                android:text="Chat with our smart virtual agent"
+                android:textColor="@color/teal_200" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/introContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sloganText"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/purple_700"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Symptoms:"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-> coarse hair texture"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-> mucus in the faces"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-> Frequent urination"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/diseaseContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/introContainer"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/purple_500"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/diseaseTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/briefDiseaseContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/diseaseContainer"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/purple_500"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/briefDiseaseTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. People who get malaria are typically very sick with high fevers, shaking chills, and flu-like illness."
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </RelativeLayout>
 
     </ScrollView>

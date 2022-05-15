@@ -1,24 +1,32 @@
 package com.example.vhaapp.ui
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.vhaapp.R
+import com.example.vhaapp.utils.Utils
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ChatFragment : Fragment() {
 
     lateinit var autoCompleteTextView: AutoCompleteTextView
     lateinit var chipGroup: ChipGroup
     lateinit var sendButton: ImageButton
     private val list = ArrayList<String>()
+    private lateinit var diseaseContainer: CardView
+    private lateinit var briefDiseaseContainer: CardView
+
+    private val viewModel: ChatViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,8 +40,10 @@ class ChatFragment : Fragment() {
         autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView)
         chipGroup = view.findViewById(R.id.chipGroup)
         sendButton = view.findViewById(R.id.sendButton)
+        diseaseContainer = view.findViewById(R.id.diseaseContainer)
+        briefDiseaseContainer = view.findViewById(R.id.briefDiseaseContainer)
 
-        val languages = resources.getStringArray(R.array.Synonyms)
+        val languages = Utils.returnSynonymsList()
         autoCompleteTextView.threshold = 1
 
         val adapter = ArrayAdapter(
@@ -48,10 +58,24 @@ class ChatFragment : Fragment() {
                 .show()
         }
 
-
         sendButton.setOnClickListener {
             if (list.size > 2) {
                 //post symptoms
+                viewModel.predictDisease(list, "7") { isSuccessful, diseaseName ->
+                    if (isSuccessful) {
+                        Utils.toast(requireContext(), diseaseName)
+                        view.findViewById<TextView>(R.id.diseaseTextView).text =
+                            resources.getString(R.string.disease, diseaseName)
+                        diseaseContainer.visibility = View.VISIBLE
+                        briefDiseaseContainer.visibility = View.VISIBLE
+                    } else {
+
+                    }
+                }
+
+                //empty list and clear chip again
+                chipGroup.removeAllViews()
+                list.clear()
             } else {
                 Toast.makeText(context, "Enter minimum 3 symptoms atleast", Toast.LENGTH_SHORT)
                     .show()
