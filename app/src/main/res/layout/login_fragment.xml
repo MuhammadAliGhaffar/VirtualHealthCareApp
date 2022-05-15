@@ -27,6 +27,7 @@
                 android:layout_height="43dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="10dp"
+                android:text="Pat-ali-163"
                 android:background="@drawable/edit_text_border"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Username" />
@@ -38,6 +39,7 @@
                 android:layout_below="@id/edtUsername"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="10dp"
+                android:text="123"
                 android:background="@drawable/edit_text_border"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Password"

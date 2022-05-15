@@ -24,6 +24,8 @@ class ChatFragment : Fragment() {
     private val list = ArrayList<String>()
     private lateinit var diseaseContainer: CardView
     private lateinit var briefDiseaseContainer: CardView
+    private lateinit var severityDiseaseContainer: CardView
+
 
     private val viewModel: ChatViewModel by viewModels()
 
@@ -42,6 +44,7 @@ class ChatFragment : Fragment() {
         sendButton = view.findViewById(R.id.sendButton)
         diseaseContainer = view.findViewById(R.id.diseaseContainer)
         briefDiseaseContainer = view.findViewById(R.id.briefDiseaseContainer)
+        severityDiseaseContainer = view.findViewById(R.id.severityDiseaseContainer)
 
         val languages = Utils.returnSynonymsList()
         autoCompleteTextView.threshold = 1
@@ -63,11 +66,20 @@ class ChatFragment : Fragment() {
                 //post symptoms
                 viewModel.predictDisease(list, "7") { isSuccessful, diseaseName ->
                     if (isSuccessful) {
-                        Utils.toast(requireContext(), diseaseName)
                         view.findViewById<TextView>(R.id.diseaseTextView).text =
                             resources.getString(R.string.disease, diseaseName)
-                        diseaseContainer.visibility = View.VISIBLE
-                        briefDiseaseContainer.visibility = View.VISIBLE
+                        viewModel.briefSolution(diseaseName) { _, _, breifSolutionObject ->
+                            view.findViewById<TextView>(R.id.severityDiseaseTextView).text =
+                                resources.getString(
+                                    R.string.severity,
+                                    breifSolutionObject.disease_severity
+                                )
+                            view.findViewById<TextView>(R.id.briefDiseaseTextView).text =
+                                breifSolutionObject.disease_description
+                            severityDiseaseContainer.visibility = View.VISIBLE
+                            diseaseContainer.visibility = View.VISIBLE
+                            briefDiseaseContainer.visibility = View.VISIBLE
+                        }
                     } else {
 
                     }
@@ -89,10 +101,7 @@ class ChatFragment : Fragment() {
             autoCompleteTextView.setText("")
         }
 
-        view.findViewById<Button>(R.id.testButton).setOnClickListener {
-            Toast.makeText(context, list.toString() + " Size = ${list.size}", Toast.LENGTH_SHORT)
-                .show()
-        }
+
     }
 
     private fun addChipToGroup(personName: String) {
@@ -106,7 +115,6 @@ class ChatFragment : Fragment() {
         chipGroup.addView(chip as View)
         chip.setOnCloseIconClickListener {
             chipGroup.removeView(chip as View)
-            Toast.makeText(context, "${chip.text} has been removed", Toast.LENGTH_SHORT).show()
             list.remove(chip.text)
         }
     }

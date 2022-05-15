@@ -28,14 +28,6 @@
             android:textSize="18sp" />
     </androidx.appcompat.widget.Toolbar>
 
-    <Button
-        android:id="@+id/testButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Test" />
-
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
         android:layout_width="wrap_content"
@@ -193,6 +185,34 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:text="Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. People who get malaria are typically very sick with high fevers, shaking chills, and flu-like illness."
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/severityDiseaseContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/briefDiseaseContainer"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_marginEnd="40dp"
+                app:cardBackgroundColor="@color/purple_500"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/severityDiseaseTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
 

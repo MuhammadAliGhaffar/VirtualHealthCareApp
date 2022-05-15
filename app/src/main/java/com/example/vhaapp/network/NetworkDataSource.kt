@@ -9,6 +9,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface NetworkDataSource {
 
@@ -24,6 +25,6 @@ interface NetworkDataSource {
     @POST("mark")
     suspend fun predictDisease(@Body symptoms: Symptoms): Response<ResponseBody>
 
-    @GET("disease/view//name/malaria")
-    suspend fun getBriefSolution(): Response<List<BriefSolutionItem>>
+    @GET("disease/view//name/{value}")
+    suspend fun getBriefSolution(@Path("value") value: String): Response<List<BriefSolutionItem>>
 }

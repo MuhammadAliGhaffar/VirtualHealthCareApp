@@ -6,6 +6,7 @@
     <string name="post">Post :%s</string>
     <string name="hospital">Hospital :%s</string>
     <string name="disease">You may have %s</string>
+    <string name="severity">Severity :%s</string>
     <string name="mapbox_access_token">sk.eyJ1IjoibXVoYW1tYWRhbGlnaGFmZmFyIiwiYSI6ImNsMjZpeGI5aTBzaXgzZnFpYXg0ajh6cXcifQ.qRSSkL1i16PAOGcTrM-2jQ</string>
 
 </resources>

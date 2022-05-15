@@ -58,20 +58,46 @@ class ChatViewModel @Inject constructor(
         }
 
 
-
     }
 
-    fun briefSolution(/*callback: (Boolean, String, List<BriefSolutionItem>) -> Unit = { _: Boolean, _: String, _: List<BriefSolutionItem> -> }*/) {
+    fun briefSolution(
+        disease: String,
+        callback: (Boolean, String, BriefSolutionItem) -> Unit = { _: Boolean, _: String, _: BriefSolutionItem -> }
+    ) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getBriefSolution()
+            val response = repository.getBriefSolution(disease)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        Utils.toast(context,it.toString())
-//                        callback(true, "List Successfully fetched", it)
+
+                        callback(true, "List Successfully fetched", it[0])
                     }
                 } else {
-//                    callback(false, response.code().toString(), emptyList())
+                    callback(
+                        false,
+                        response.code().toString(),
+                        BriefSolutionItem(
+                            "",
+                            "",
+                            "",
+                            0,
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            0,
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            0,
+                            ""
+                        )
+                    )
                 }
             }
         }

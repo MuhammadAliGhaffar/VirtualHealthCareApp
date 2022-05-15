@@ -4,6 +4,7 @@ import com.example.vhaapp.model.Symptoms
 import com.example.vhaapp.network.NetworkDataSource
 import okhttp3.RequestBody
 import retrofit2.http.Body
+import retrofit2.http.Path
 
 class Repository(private val networkDataSource: NetworkDataSource) {
 
@@ -19,6 +20,6 @@ class Repository(private val networkDataSource: NetworkDataSource) {
     suspend fun predictDisease(@Body symptoms: Symptoms) =
         networkDataSource.predictDisease(symptoms)
 
-    suspend fun getBriefSolution() =
-        networkDataSource.getBriefSolution()
+    suspend fun getBriefSolution(@Path("value") value: String) =
+        networkDataSource.getBriefSolution(value)
 }
