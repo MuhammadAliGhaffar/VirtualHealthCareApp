@@ -183,8 +183,8 @@
                         android:id="@+id/briefDiseaseTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
                         android:text="Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. People who get malaria are typically very sick with high fevers, shaking chills, and flu-like illness."
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -197,8 +197,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/briefDiseaseContainer"
                 android:layout_marginTop="10dp"
-                android:visibility="gone"
                 android:layout_marginEnd="40dp"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/purple_500"
                 app:cardCornerRadius="10dp">
 
@@ -215,6 +215,108 @@
                         android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/tipsAndAdviceContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/severityDiseaseContainer"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/purple_500"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tipsAndAdviceTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/helpContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tipsAndAdviceContainer"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/purple_500"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/helpTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/suggestDoctorContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/helpContainer"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/purple_500"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/suggestDoctorImageView"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:src="@drawable/female_doctor" />
+
+                    <TextView
+                        android:id="@+id/suggestDoctorTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/suggestDoctorImageView"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@id/suggestDoctorImageView"
+                        android:text="Muhammad Ali Ghaffar"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/suggestDoctorButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/suggestDoctorImageView"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@id/suggestDoctorImageView"
+                        android:backgroundTint="@color/purple_700"
+                        android:text="Book Appointment" />
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
