@@ -2,6 +2,7 @@ package com.example.vhaapp.network
 
 import com.example.vhaapp.model.BriefSolutionItem
 import com.example.vhaapp.model.Doctor
+import com.example.vhaapp.model.Patient
 import com.example.vhaapp.model.Symptoms
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -19,7 +20,7 @@ interface NetworkDataSource {
     @POST("login")
     suspend fun loginPatient(@Body requestBody: RequestBody): Response<ResponseBody>
 
-    @GET("doctors")
+    @GET("get-doctors")
     suspend fun getAllDoctors(): Response<List<Doctor>>
 
     @POST("mark")
@@ -27,4 +28,8 @@ interface NetworkDataSource {
 
     @GET("disease/view//name/{value}")
     suspend fun getBriefSolution(@Path("value") value: String): Response<List<BriefSolutionItem>>
+
+    @GET("patient/view/{value}")
+    suspend fun getSinglePatient(@Path("value") value: Int): Response<Patient>
+
 }

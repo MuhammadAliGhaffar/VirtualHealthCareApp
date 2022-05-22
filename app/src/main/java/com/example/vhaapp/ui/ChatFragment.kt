@@ -9,8 +9,10 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.vhaapp.R
 import com.example.vhaapp.utils.Utils
+import com.example.vhaapp.utils.hideKeyboard
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,10 +23,15 @@ class ChatFragment : Fragment() {
     lateinit var autoCompleteTextView: AutoCompleteTextView
     lateinit var chipGroup: ChipGroup
     lateinit var sendButton: ImageButton
+    lateinit var imgBack:ImageView
     private val list = ArrayList<String>()
     private lateinit var diseaseContainer: CardView
     private lateinit var briefDiseaseContainer: CardView
     private lateinit var severityDiseaseContainer: CardView
+    private lateinit var tipsAndAdviceContainer:CardView
+    private lateinit var helpContainer:CardView
+    private lateinit var suggestDoctorContainer:CardView
+    private lateinit var suggestDoctorImageView : ImageView
 
 
     private val viewModel: ChatViewModel by viewModels()
@@ -42,9 +49,14 @@ class ChatFragment : Fragment() {
         autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView)
         chipGroup = view.findViewById(R.id.chipGroup)
         sendButton = view.findViewById(R.id.sendButton)
+        imgBack = view.findViewById(R.id.imgBack)
+        suggestDoctorImageView = view.findViewById(R.id.suggestDoctorImageView)
         diseaseContainer = view.findViewById(R.id.diseaseContainer)
         briefDiseaseContainer = view.findViewById(R.id.briefDiseaseContainer)
         severityDiseaseContainer = view.findViewById(R.id.severityDiseaseContainer)
+        tipsAndAdviceContainer = view.findViewById(R.id.tipsAndAdviceContainer)
+        helpContainer = view.findViewById(R.id.helpContainer)
+        suggestDoctorContainer = view.findViewById(R.id.suggestDoctorContainer)
 
         val languages = Utils.returnSynonymsList()
         autoCompleteTextView.threshold = 1
@@ -56,7 +68,7 @@ class ChatFragment : Fragment() {
         autoCompleteTextView.setAdapter(adapter)
 
 
-        autoCompleteTextView.setOnItemClickListener { adapterView, view, i, l ->
+        autoCompleteTextView.setOnItemClickListener { adapterView, _, i, _ ->
             Toast.makeText(context, adapterView.adapter.getItem(i).toString(), Toast.LENGTH_SHORT)
                 .show()
         }
@@ -76,9 +88,27 @@ class ChatFragment : Fragment() {
                                 )
                             view.findViewById<TextView>(R.id.briefDiseaseTextView).text =
                                 breifSolutionObject.disease_description
+                            view.findViewById<TextView>(R.id.tipsAndAdviceTextView).text =
+                                breifSolutionObject.tip_disease
+                            view.findViewById<TextView>(R.id.helpTextView).text = breifSolutionObject.tip_description
+
+                            if (breifSolutionObject.doctor_gender == "Female"){
+                                suggestDoctorImageView.setImageDrawable(resources.getDrawable(R.drawable.female_doctor))
+                            }else {
+                                suggestDoctorImageView.setImageDrawable(resources.getDrawable(R.drawable.male_doctor))
+                            }
+                            view.findViewById<TextView>(R.id.suggestDoctorTextView).text = breifSolutionObject.doctor_fname
+
+
+
+                            //Visibility On
                             severityDiseaseContainer.visibility = View.VISIBLE
                             diseaseContainer.visibility = View.VISIBLE
                             briefDiseaseContainer.visibility = View.VISIBLE
+                            tipsAndAdviceContainer.visibility = View.VISIBLE
+                            helpContainer.visibility = View.VISIBLE
+                            suggestDoctorContainer.visibility = View.VISIBLE
+                            hideKeyboard()
                         }
                     } else {
 
@@ -94,6 +124,11 @@ class ChatFragment : Fragment() {
             }
         }
 
+        //Book Appointment
+        view.findViewById<Button>(R.id.suggestDoctorButton).setOnClickListener {
+
+        }
+
         autoCompleteTextView.setOnItemClickListener { _, _, i, _ ->
             Toast.makeText(context, adapter.getItem(i).toString(), Toast.LENGTH_SHORT).show()
             list.add(adapter.getItem(i).toString())
@@ -101,7 +136,9 @@ class ChatFragment : Fragment() {
             autoCompleteTextView.setText("")
         }
 
-
+        imgBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun addChipToGroup(personName: String) {

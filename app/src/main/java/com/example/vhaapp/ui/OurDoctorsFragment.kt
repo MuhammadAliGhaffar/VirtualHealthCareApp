@@ -62,7 +62,7 @@ class OurDoctorsFragment : Fragment() {
         }
 
         imgBack.setOnClickListener {
-            findNavController().navigate(R.id.action_ourDoctorsFragment_to_homeFragment)
+            findNavController().navigateUp()
         }
     }
 }

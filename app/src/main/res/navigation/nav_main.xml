@@ -40,6 +40,12 @@
         <action
             android:id="@+id/action_homeFragment_to_nearestHospitalsFragment"
             app:destination="@id/nearestHospitalsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -91,5 +97,14 @@
         <action
             android:id="@+id/action_viewDoctorDetailsFragment_to_ourDoctorsFragment"
             app:destination="@id/ourDoctorsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.vhaapp.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

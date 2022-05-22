@@ -22,4 +22,7 @@ class Repository(private val networkDataSource: NetworkDataSource) {
 
     suspend fun getBriefSolution(@Path("value") value: String) =
         networkDataSource.getBriefSolution(value)
+
+    suspend fun getSinglePatient(@Path("value") value: Int) =
+        networkDataSource.getSinglePatient(value)
 }

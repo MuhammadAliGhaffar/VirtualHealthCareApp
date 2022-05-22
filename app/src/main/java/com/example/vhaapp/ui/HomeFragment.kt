@@ -3,8 +3,10 @@ package com.example.vhaapp.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
@@ -12,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.vhaapp.R
+import com.example.vhaapp.utils.KeyValueStore
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
@@ -75,6 +78,8 @@ class HomeFragment : Fragment() {
           toolbar.setOnMenuItemClickListener {
                when (it.itemId) {
                     R.id.menuLogout -> {
+                         KeyValueStore.clearPref()
+                         findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
                          Toast.makeText(activity, "Logout", Toast.LENGTH_SHORT).show()
                          true
                     }
@@ -88,6 +93,9 @@ class HomeFragment : Fragment() {
           toolbar.setNavigationOnClickListener {
                mainDrawer.open()
           }
+
+          // Left Hamburger Header views
+          navigationView.getHeaderView(0).findViewById<TextView>(R.id.textViewUsername).setText(KeyValueStore.getPatientDetails().patient_fname)
 
           // Left Hamburger menu item click listener and close functionality
           navigationView.setNavigationItemSelectedListener { menuItem ->
