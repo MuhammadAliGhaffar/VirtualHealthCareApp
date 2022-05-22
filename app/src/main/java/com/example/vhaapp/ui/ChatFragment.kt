@@ -126,6 +126,7 @@ class ChatFragment : Fragment() {
 
         //Book Appointment
         view.findViewById<Button>(R.id.suggestDoctorButton).setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
 
         }
 

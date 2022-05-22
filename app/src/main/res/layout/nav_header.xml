@@ -48,13 +48,14 @@
             android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/buttonEditProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewUsername"
             android:layout_centerHorizontal="true"
             android:paddingHorizontal="35dp"
             android:paddingVertical="8dp"
-            android:textColor="@color/white"
-            android:text="Edit Profile" />
+            android:text="Edit Profile"
+            android:textColor="@color/white" />
     </RelativeLayout>
 </RelativeLayout>

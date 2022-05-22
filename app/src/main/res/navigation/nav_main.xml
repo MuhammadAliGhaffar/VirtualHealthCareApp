@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_chatFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_doctorAppointmentDetailsFragment"
+            app:destination="@id/doctorAppointmentDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/nearestHospitalsFragment"
@@ -107,4 +110,21 @@
             android:id="@+id/action_profileFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/doctorAppointmentDetailsFragment"
+        android:name="com.example.vhaapp.ui.DoctorAppointmentDetailsFragment"
+        android:label="fragment_doctor_appointment_details"
+        tools:layout="@layout/fragment_doctor_appointment_details" >
+        <action
+            android:id="@+id/action_doctorAppointmentDetailsFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_doctorAppointmentDetailsFragment_to_bookAppointmentFragment"
+            app:destination="@id/bookAppointmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookAppointmentFragment"
+        android:name="com.example.vhaapp.ui.BookAppointmentFragment"
+        android:label="book_appointment_fragment"
+        tools:layout="@layout/book_appointment_fragment" />
 </navigation>

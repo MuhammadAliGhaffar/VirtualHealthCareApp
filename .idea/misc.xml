@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/drawable/bg_black_boundary.xml" value="0.1625" />
+        <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/drawable/bg_round_corners.xml" value="0.1625" />
+        <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/drawable/edit_text_border.xml" value="0.1625" />
+        <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/book_appointment_fragment.xml" value="0.20493827160493827" />
         <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/chat_fragment.xml" value="0.2553846153846154" />
+        <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/fragment_doctor_appointment_details.xml" value="0.259375" />
         <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/fragment_nearest_hospitals.xml" value="0.1" />
         <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/fragment_our_doctors.xml" value="0.2553846153846154" />
         <entry key="..\:/MobileProjectsWorkspace/AndroidDevelopment/VirtualHealthCareApp/app/src/main/res/layout/home_fragment.xml" value="0.259375" />
