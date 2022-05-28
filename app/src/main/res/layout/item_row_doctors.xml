@@ -27,7 +27,7 @@
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/male_doctor" />
 
         </androidx.cardview.widget.CardView>
 
