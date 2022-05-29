@@ -32,5 +32,10 @@ interface NetworkDataSource {
     @GET("prediction/{id}")
     suspend fun getPredictions(@Path("id") id: String): Response<List<Prediction>>
 
+    @POST("book-appointment")
+    suspend fun bookAppointment(@Body requestBody: RequestBody): Response<ResponseBody>
+
+    @GET("appointments")
+    suspend fun getAppointments(): Response<List<Appointment>>
 
 }

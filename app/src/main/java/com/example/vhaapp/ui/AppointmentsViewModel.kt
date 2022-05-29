@@ -1,7 +1,34 @@
 package com.example.vhaapp.ui
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
+import com.example.vhaapp.model.Appointment
+import com.example.vhaapp.model.Doctor
+import com.example.vhaapp.repository.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class AppointmentsViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+@HiltViewModel
+class AppointmentsViewModel @Inject constructor(
+    @ApplicationContext val context: Context,
+    private val repository: Repository
+) : ViewModel() {
+
+    fun getAppointmentList(callback: (Boolean, String, List<Appointment>) -> Unit = { _: Boolean, _: String, _: List<Appointment> -> }) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getAppointments()
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    response.body()?.let { callback(true, "List Successfully fetched", it) }
+                } else {
+                    callback(false, response.code().toString(), emptyList())
+                }
+            }
+        }
+    }
 }

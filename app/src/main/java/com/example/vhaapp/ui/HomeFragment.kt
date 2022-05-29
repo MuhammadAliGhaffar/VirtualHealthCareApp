@@ -102,10 +102,10 @@ class HomeFragment : Fragment() {
             .setText(KeyValueStore.getPatientDetails().patient_fname)
         if (KeyValueStore.getPatientDetails().patient_gender.equals("Female")) {
             navigationView.getHeaderView(0).findViewById<ImageView>(R.id.imageViewProfile)
-                .setImageDrawable(resources.getDrawable(R.drawable.female_doctor))
+                .setImageDrawable(resources.getDrawable(R.drawable.patient_female))
         } else {
             navigationView.getHeaderView(0).findViewById<ImageView>(R.id.imageViewProfile)
-                .setImageDrawable(resources.getDrawable(R.drawable.male_doctor))
+                .setImageDrawable(resources.getDrawable(R.drawable.patient_male))
         }
         navigationView.getHeaderView(0).findViewById<TextView>(R.id.buttonEditProfile)
             .setOnClickListener {

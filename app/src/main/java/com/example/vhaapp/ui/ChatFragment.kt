@@ -1,6 +1,7 @@
 package com.example.vhaapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vhaapp.R
+import com.example.vhaapp.model.BriefSolution
 import com.example.vhaapp.utils.KeyValueStore
 import com.example.vhaapp.utils.Utils
 import com.example.vhaapp.utils.hideKeyboard
@@ -34,6 +36,7 @@ class ChatFragment : Fragment() {
     private lateinit var suggestDoctorContainer:CardView
     private lateinit var suggestDoctorImageView : ImageView
 
+    private lateinit var tempBriefSolution: BriefSolution
 
     private val viewModel: ChatViewModel by viewModels()
 
@@ -100,8 +103,7 @@ class ChatFragment : Fragment() {
                             }
                             view.findViewById<TextView>(R.id.suggestDoctorTextView).text = breifSolutionObject.doctor_fname
 
-
-
+                            tempBriefSolution = breifSolutionObject
                             //Visibility On
                             severityDiseaseContainer.visibility = View.VISIBLE
                             diseaseContainer.visibility = View.VISIBLE
@@ -127,7 +129,29 @@ class ChatFragment : Fragment() {
 
         //Book Appointment
         view.findViewById<Button>(R.id.suggestDoctorButton).setOnClickListener {
-            findNavController().navigate(R.id.action_chatFragment_to_doctorAppointmentDetailsFragment)
+            val bundle = Bundle()
+            bundle.putString("current_company",tempBriefSolution.current_company)
+            bundle.putString("designation",tempBriefSolution.designation)
+            bundle.putString("disease_description",tempBriefSolution.disease_description)
+            bundle.putInt("disease_id",tempBriefSolution.disease_id)
+            bundle.putString("disease_name",tempBriefSolution.disease_name)
+            bundle.putString("disease_severity",tempBriefSolution.disease_severity)
+            bundle.putString("disease_specialization",tempBriefSolution.disease_specialization)
+            bundle.putString("doctor_fname",tempBriefSolution.doctor_fname)
+            bundle.putString("doctor_gender",tempBriefSolution.doctor_gender)
+            bundle.putInt("doctor_id",tempBriefSolution.doctor_id)
+            bundle.putString("doctor_lname",tempBriefSolution.doctor_lname)
+            bundle.putString("doctor_username",tempBriefSolution.doctor_username)
+            bundle.putString("email",tempBriefSolution.email)
+            bundle.putString("qualification",tempBriefSolution.qualification)
+            bundle.putString("specialization",tempBriefSolution.specialization)
+            bundle.putString("tip_description",tempBriefSolution.tip_description)
+            bundle.putString("tip_disease",tempBriefSolution.tip_disease)
+            bundle.putInt("tip_id",tempBriefSolution.tip_id)
+            bundle.putString("year_of_experience",tempBriefSolution.year_of_experience)
+
+            Log.d("AliTag",tempBriefSolution.toString())
+            findNavController().navigate(R.id.action_chatFragment_to_doctorAppointmentDetailsFragment,bundle)
 
         }
 

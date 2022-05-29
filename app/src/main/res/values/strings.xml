@@ -14,4 +14,9 @@
     <string name="patient_name">Name : %s</string>
     <string name="disease_name">Disease Name : %s</string>
     <string name="prediction_date">Prediction Date : %s</string>
+
+    <string name="doctor_name">Doctor Name : %s</string>
+    <string name="patient_name_appointment">Patient Name : %s</string>
+    <string name="appointment_date">Appointment Date : %s</string>
+    <string name="appointment_time">Appointment Time : %s</string>
 </resources>

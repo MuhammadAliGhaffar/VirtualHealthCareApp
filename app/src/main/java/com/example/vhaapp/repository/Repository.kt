@@ -28,4 +28,11 @@ class Repository(private val networkDataSource: NetworkDataSource) {
 
     suspend fun getPredictions(@Path("id") id: String) =
         networkDataSource.getPredictions(id)
+
+    suspend fun bookAppointment(@Body requestBody: RequestBody) =
+        networkDataSource.bookAppointment(requestBody)
+
+    suspend fun getAppointments() =
+        networkDataSource.getAppointments()
+
 }

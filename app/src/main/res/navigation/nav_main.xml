@@ -135,7 +135,11 @@
         android:id="@+id/bookAppointmentFragment"
         android:name="com.example.vhaapp.ui.BookAppointmentFragment"
         android:label="book_appointment_fragment"
-        tools:layout="@layout/book_appointment_fragment" />
+        tools:layout="@layout/book_appointment_fragment" >
+        <action
+            android:id="@+id/action_bookAppointmentFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/appointmentsFragment"
         android:name="com.example.vhaapp.ui.AppointmentsFragment"
