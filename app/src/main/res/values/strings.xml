@@ -10,4 +10,8 @@
     <string name="who_are">Who are %s</string>
     <string name="mapbox_access_token">sk.eyJ1IjoibXVoYW1tYWRhbGlnaGFmZmFyIiwiYSI6ImNsMjZpeGI5aTBzaXgzZnFpYXg0ajh6cXcifQ.qRSSkL1i16PAOGcTrM-2jQ</string>
 
+
+    <string name="patient_name">Name : %s</string>
+    <string name="disease_name">Disease Name : %s</string>
+    <string name="prediction_date">Prediction Date : %s</string>
 </resources>

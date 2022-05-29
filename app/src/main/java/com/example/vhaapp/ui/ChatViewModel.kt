@@ -3,13 +3,10 @@ package com.example.vhaapp.ui
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.vhaapp.model.BriefSolutionItem
+import com.example.vhaapp.model.BriefSolution
 import com.example.vhaapp.model.Disease
-import com.example.vhaapp.model.Doctor
 import com.example.vhaapp.model.Symptoms
 import com.example.vhaapp.repository.Repository
-import com.example.vhaapp.utils.Utils
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -62,7 +59,7 @@ class ChatViewModel @Inject constructor(
 
     fun briefSolution(
         disease: String,
-        callback: (Boolean, String, BriefSolutionItem) -> Unit = { _: Boolean, _: String, _: BriefSolutionItem -> }
+        callback: (Boolean, String, BriefSolution) -> Unit = { _: Boolean, _: String, _: BriefSolution -> }
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getBriefSolution(disease)
@@ -76,7 +73,7 @@ class ChatViewModel @Inject constructor(
                     callback(
                         false,
                         response.code().toString(),
-                        BriefSolutionItem(
+                        BriefSolution(
                             "",
                             "",
                             "",

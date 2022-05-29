@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vhaapp.R
+import com.example.vhaapp.utils.KeyValueStore
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,8 +42,16 @@ class LoginFragment : Fragment() {
         txtSignUp = view.findViewById(R.id.txtSignUp)
         btnSignIn = view.findViewById(R.id.btnSignIn)
 
-        goToHomeFragment()
-        goToRegistrationFragment()
+
+        if (KeyValueStore.getPatientDetails().patient_username != null &&
+            KeyValueStore.getPatientDetails().patient_email != null
+        ) {
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+        } else {
+            goToHomeFragment()
+            goToRegistrationFragment()
+        }
+
     }
 
     private fun goToHomeFragment() {

@@ -191,6 +191,7 @@
                     android:weightSum="3">
 
                     <TextView
+                        android:id="@+id/day1TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -200,6 +201,7 @@
 
 
                     <TextView
+                        android:id="@+id/in1TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -209,6 +211,7 @@
 
 
                     <TextView
+                        android:id="@+id/out1TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -229,6 +232,7 @@
                     android:weightSum="3">
 
                     <TextView
+                        android:id="@+id/day2TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -238,6 +242,7 @@
 
 
                     <TextView
+                        android:id="@+id/in2TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -247,6 +252,7 @@
 
 
                     <TextView
+                        android:id="@+id/out2TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

@@ -20,9 +20,12 @@ class Repository(private val networkDataSource: NetworkDataSource) {
     suspend fun predictDisease(@Body symptoms: Symptoms) =
         networkDataSource.predictDisease(symptoms)
 
-    suspend fun getBriefSolution(@Path("value") value: String) =
-        networkDataSource.getBriefSolution(value)
+    suspend fun getBriefSolution(@Path("disease") disease: String) =
+        networkDataSource.getBriefSolution(disease)
 
-    suspend fun getSinglePatient(@Path("value") value: Int) =
-        networkDataSource.getSinglePatient(value)
+    suspend fun getSinglePatient(@Path("id") id: Int) =
+        networkDataSource.getSinglePatient(id)
+
+    suspend fun getPredictions(@Path("id") id: String) =
+        networkDataSource.getPredictions(id)
 }
