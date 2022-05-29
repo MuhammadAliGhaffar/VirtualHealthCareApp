@@ -46,6 +46,15 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_appointmentsFragment"
+            app:destination="@id/appointmentsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_predictionFragment"
+            app:destination="@id/predictionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -127,4 +136,31 @@
         android:name="com.example.vhaapp.ui.BookAppointmentFragment"
         android:label="book_appointment_fragment"
         tools:layout="@layout/book_appointment_fragment" />
+    <fragment
+        android:id="@+id/appointmentsFragment"
+        android:name="com.example.vhaapp.ui.AppointmentsFragment"
+        android:label="appointments_fragment"
+        tools:layout="@layout/appointments_fragment" >
+        <action
+            android:id="@+id/action_appointmentsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/predictionFragment"
+        android:name="com.example.vhaapp.ui.PredictionFragment"
+        android:label="symptoms_fragment"
+        tools:layout="@layout/prediction_fragment" >
+        <action
+            android:id="@+id/action_symptomsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.vhaapp.ui.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" >
+        <action
+            android:id="@+id/action_articleFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

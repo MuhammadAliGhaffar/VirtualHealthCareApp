@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vhaapp.R
+import com.example.vhaapp.utils.KeyValueStore
 import com.example.vhaapp.utils.Utils
 import com.example.vhaapp.utils.hideKeyboard
 import com.google.android.material.chip.Chip
@@ -76,7 +77,7 @@ class ChatFragment : Fragment() {
         sendButton.setOnClickListener {
             if (list.size > 2) {
                 //post symptoms
-                viewModel.predictDisease(list, "7") { isSuccessful, diseaseName ->
+                viewModel.predictDisease(list, KeyValueStore.getPatientDetails().patient_id.toString()) { isSuccessful, diseaseName ->
                     if (isSuccessful) {
                         view.findViewById<TextView>(R.id.diseaseTextView).text =
                             resources.getString(R.string.disease, diseaseName)
@@ -126,7 +127,7 @@ class ChatFragment : Fragment() {
 
         //Book Appointment
         view.findViewById<Button>(R.id.suggestDoctorButton).setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+            findNavController().navigate(R.id.action_chatFragment_to_doctorAppointmentDetailsFragment)
 
         }
 

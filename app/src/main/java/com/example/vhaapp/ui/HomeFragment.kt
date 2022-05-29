@@ -3,9 +3,11 @@ package com.example.vhaapp.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.*
+import android.widget.ImageView
+import android.widget.RelativeLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.drawerlayout.widget.DrawerLayout
@@ -13,8 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.vhaapp.R
 import com.example.vhaapp.utils.KeyValueStore
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 
 class HomeFragment : Fragment() {
@@ -22,7 +22,6 @@ class HomeFragment : Fragment() {
     private lateinit var toolbar: Toolbar
     private lateinit var mainDrawer: DrawerLayout
     private lateinit var navigationView: NavigationView
-    private lateinit var bottomNavigation: BottomNavigationView
     private lateinit var mainHomeLayout: RelativeLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,9 +60,15 @@ class HomeFragment : Fragment() {
         mainHomeLayout.findViewById<CardView>(R.id.nearestHospitalCardView).setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_nearestHospitalsFragment)
         }
-        mainHomeLayout.findViewById<CardView>(R.id.articlesCardView).setOnClickListener { }
-        mainHomeLayout.findViewById<CardView>(R.id.predictionCardView).setOnClickListener { }
-        mainHomeLayout.findViewById<CardView>(R.id.appointmentsCardView).setOnClickListener { }
+        mainHomeLayout.findViewById<CardView>(R.id.articlesCardView).setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_articleFragment)
+        }
+        mainHomeLayout.findViewById<CardView>(R.id.predictionCardView).setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_predictionFragment)
+        }
+        mainHomeLayout.findViewById<CardView>(R.id.appointmentsCardView).setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_appointmentsFragment)
+        }
 
         setupRightMenu()
         setupNavigationDrawer()
@@ -102,7 +107,7 @@ class HomeFragment : Fragment() {
             navigationView.getHeaderView(0).findViewById<ImageView>(R.id.imageViewProfile)
                 .setImageDrawable(resources.getDrawable(R.drawable.male_doctor))
         }
-        navigationView.getHeaderView(0).findViewById<Button>(R.id.buttonEditProfile)
+        navigationView.getHeaderView(0).findViewById<TextView>(R.id.buttonEditProfile)
             .setOnClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
             }
@@ -112,6 +117,16 @@ class HomeFragment : Fragment() {
             // Handle menu item selected
             when (menuItem.itemId) {
                 R.id.menuArticle -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_articleFragment)
+                }
+                R.id.menuAppointments -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_appointmentsFragment)
+                }
+                R.id.menuPrediction -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_predictionFragment)
+                }
+                R.id.menuNearestHospital -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_nearestHospitalsFragment)
                 }
                 R.id.menuDoctors -> {
                     findNavController().navigate(R.id.action_homeFragment_to_ourDoctorsFragment)
