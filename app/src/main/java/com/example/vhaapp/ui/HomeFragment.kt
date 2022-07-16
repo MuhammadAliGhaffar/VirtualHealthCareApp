@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_ourDoctorsFragment)
         }
         mainHomeLayout.findViewById<CardView>(R.id.nearestHospitalCardView).setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_nearestHospitalsFragment)
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/?api=1&query=hospital")))
         }
         mainHomeLayout.findViewById<CardView>(R.id.articlesCardView).setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_articleFragment)
@@ -126,7 +126,7 @@ class HomeFragment : Fragment() {
                     findNavController().navigate(R.id.action_homeFragment_to_predictionFragment)
                 }
                 R.id.menuNearestHospital -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_nearestHospitalsFragment)
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/?api=1&query=hospital")))
                 }
                 R.id.menuDoctors -> {
                     findNavController().navigate(R.id.action_homeFragment_to_ourDoctorsFragment)
